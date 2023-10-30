@@ -30,6 +30,7 @@ const slides = [
 ];
 
 //--------CREATION DOTS--------------
+let allDots = [];
 
 function createDots(numberOfSlide) {
   for (let c = 0; c < numberOfSlide; c++) {
@@ -37,13 +38,14 @@ function createDots(numberOfSlide) {
     divDot.classList.add("dot");
     divdots.appendChild(divDot);
 
-  
     // slides.forEach((i) => {
     //   divDot.classList.add("dot_selected")
 
-      
     // });
-}  
+  }
+  allDots = document.querySelectorAll(".dot");
+  // console.log(allDots[0]);
+  allDots[i].classList.add("dot_selected");
 }
 
 createDots(slides.length);
@@ -51,25 +53,36 @@ createDots(slides.length);
 //---------événements au click des flèches-----------//
 // divdots.classList.add("dot_selected")
 
-
 arrow_right.addEventListener("click", () => {
   i++;
-  if (i === 4) {
-    i = 0;  
+
+  if (i >= slides.length) {
+    i = 0;
+    allDots[i].classList.add("dot_selected");
+    allDots[slides.length - 1].classList.remove("dot_selected");
+  } else {
+    allDots[i].classList.add("dot_selected");
+    allDots[i - 1].classList.remove("dot_selected");
   }
- 
   divImage.src = slides[i].image;
   text.innerHTML = slides[i].tagLine;
 });
 
-
 arrow_left.addEventListener("click", () => {
-  i--; 
+  i--;
   if (i < 0) {
-     i = slides.length - 1
-  
+    i = slides.length - 1;
+
+    allDots[i].classList.add("dot_selected");
+    allDots[slides.length + 1].classList.remove("dot_selected");
+  } else {
+    allDots[i].classList.add("dot_selected");
+    allDots[i + 1].classList.remove("dot_selected");
   }
+
+  // if (i < 0) {
+  //   i = slides.length - 1;
+  // }
   divImage.src = slides[i].image;
   text.innerHTML = slides[i].tagLine;
-  
 });
