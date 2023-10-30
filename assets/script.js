@@ -6,6 +6,7 @@ const arrow_left = document.querySelector(".arrow_left");
 const arrow_right = document.querySelector(".arrow_right");
 const text = document.querySelector("#banner p");
 let i = 0;
+let allDots = [];
 
 //---------TABLEAUX---------
 
@@ -30,7 +31,6 @@ const slides = [
 ];
 
 //--------CREATION DOTS--------------
-let allDots = [];
 
 function createDots(numberOfSlide) {
   for (let c = 0; c < numberOfSlide; c++) {
@@ -70,19 +70,19 @@ arrow_right.addEventListener("click", () => {
 
 arrow_left.addEventListener("click", () => {
   i--;
+
   if (i < 0) {
     i = slides.length - 1;
-
-    allDots[i].classList.add("dot_selected");
-    allDots[slides.length + 1].classList.remove("dot_selected");
+    allDots[i].classList.add("dot_selected")
+    allDots[0].classList.remove("dot_selected")
   } else {
-    allDots[i].classList.add("dot_selected");
-    allDots[i + 1].classList.remove("dot_selected");
+    allDots[i].classList.add("dot_selected")
+    allDots[i + 1].classList.remove("dot_selected")
+    
   }
 
-  // if (i < 0) {
-  //   i = slides.length - 1;
-  // }
   divImage.src = slides[i].image;
   text.innerHTML = slides[i].tagLine;
 });
+
+
