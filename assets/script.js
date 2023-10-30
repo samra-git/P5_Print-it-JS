@@ -47,22 +47,9 @@ function createDots(numberOfSlide) {
 
 createDots(slides.length);
 
-//--------click sur le  dot----------
-let ok = () => {
-  allDots.src = slides[i].image
-  allDots.innerHTML = slides[i].tagLine
-}
-console.log(ok);
 
-// ok.addEventListener("click", () => {
-
-// })
-
-let dotPointer = document.getElementsByClassName(".dot");
- 
 
 //---------événements au click des flèches-----------//
-// divdots.classList.add("dot_selected")
 
 arrow_right.addEventListener("click", () => {
   i++;
@@ -97,13 +84,3 @@ arrow_left.addEventListener("click", () => {
   text.innerHTML = slides[i].tagLine;
 });
 
-// function linkDot() {
-//   const dotPointer = document.getElementsByClassName(".dot");
-//   console.log(dotPointer);
-
-//   for (let d = 0; d < divdots; d++) {
-
-
-//   }
-// }
-// linkDot();
